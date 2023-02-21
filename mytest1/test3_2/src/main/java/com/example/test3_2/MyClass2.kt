@@ -1,7 +1,9 @@
 package com.example.test3_2
 
+import sun.jvm.hotspot.oops.CellTypeState.value
+
 // 최고 상위 영역 : 선언과 동시에 초깃값 할당.
-val name = "이상용"
+// val name = "이상용"
 val name2:String = "이상용2"
 val num1 = 10;
 
@@ -19,7 +21,177 @@ class MyClass2 {
     // val는 final 느낌 재할당 못한다
 }
 
+class User {
+    var name = "lsy"
+    constructor(name: String){
+        this.name = name
+    }
+    fun someFun() {
+        println("name : $name")
+    }
+
+}
+
+class User2(name:String, age:Int) {
+    init{
+        println("객체 생성 할 때 마다 init 실행이 됨.")
+    }
+}
+
+class User3(val name:String, val age:Int) {
+
+ //   class User3(name:String, age:Int) {
+    init{
+        println("inti 안에서는 주생성자 매개변수 사용 가능.: $name, $age")
+    }
+
+    //  var, val 로 지정하면 다른 함수에서도 사용 가능
+    fun someFun() {
+        println("name : $name")
+    }
+
+}
+
+class User4(name:String, age: Int, phone: String) {
+    // 실제 작업은 주 생성자에서 선언을 해서 사용을 많이 하는 편.
+   // constructor(name: String, age: Int):this(name)
+
+   // constructor(name: String, age: Int, phone: String):this(name,age)
+}
+
+open class Super(name:String){
+}
+
+class Sub: Super {
+    constructor(name: String): super(name)
+}
+
+open class Super2(name:String){
+    var SuperData = 10
+    fun superFun() {
+        println("super class")
+    }
+}
+
+class Sub2(name: String): Super2(name)
+
+open class Super3(name:String){
+    open var superData = 10
+    open fun superFun() {
+        println("super class")
+    }
+}
+
+class Sub3(name: String): Super3(name) {
+    override var superData = 20
+    override fun superFun() {
+        println("재정의 테스트")
+    }
+}
+
+open class Super4{
+    var publicData = 10
+    protected var protectedData = 10
+    private var privateData = 10
+}
+
+class Sub4: Super4 () {
+    fun subFun() {
+        publicData++
+        protectedData++
+        //privateData++
+
+    }
+}
+
+class NonDataClass(val name : String, val age: Int)
+
+data class DataClass(val name : String, val age: Int)
+
+val obj = object {
+    var data = 10
+    fun some() {
+        println("익명 클래스 테스트")
+    }
+}
+
+
 fun main() {
+
+    val nonData1 = NonDataClass("lsy2",30)
+    val nonData2 = NonDataClass("lsy2",30)
+    val dataClass1 = DataClass("lsy3",40)
+    val dataClass2 = DataClass("lsy3",40)
+    println(nonData1.equals(nonData2))
+    println(dataClass1.equals(dataClass2))
+    println(nonData1.toString())
+    println(dataClass2.toString())
+
+    var obj4 = Sub4()
+    obj4.publicData
+
+    var obj3 = Sub3("lsy7")
+    println(obj3.superData)
+    obj3.superFun()
+
+    var obj = Sub2("lsy7")
+    println(obj.SuperData)
+    obj.superFun()
+
+    val user5 = User3("lsy3",30)
+    user5.someFun()
+
+    val user2 = User2("lsy2", 40)
+    val user3 = User2("lsy3", 40)
+    val user4 = User2("lsy4", 40)
+
+
+
+    // 객체 생성시 new 없이, 바로 생성자 호출 방법.
+    val user = User("lsy2")
+    user.someFun()
+
+    var data23 = arrayOf<Int>(10, 20, 30)
+    for ( (index, value) in data23.withIndex()) {
+        print(value)
+        if (index !== data23.size -1) print(",")
+    }
+    println("========================================")
+
+    var data22 = arrayOf<Int>(10, 20, 30)
+    for ( i in data22.indices) {
+        print(data22[i])
+        if (i !== data22.size -1) print(",")
+    }
+    println("========================================")
+
+    var sum: Int = 0
+    for ( i in 1..10) {
+        sum += i
+    }
+    println(sum)
+
+
+    var data21 : Any = "hi"
+    val result21 = when (data21) {
+        is String -> println ("data is String")
+        in 1..10 -> println ("data is 1..10")
+        else ->{
+            println ("data is not valid")
+        }
+    }
+    println("when 표현식 사용으로 결과값 확인 : $result21")
+
+    var data20 : Any = "hi"
+    when (data20) {
+        is String -> println ("data is String")
+        in 1..10 -> println ("data is 1..10")
+        else ->{
+            println ("data is not valid")
+        }
+    }
+
+
     var data19 = "hi"
     when (data19) {
         "hi" -> println ("data is hi")
