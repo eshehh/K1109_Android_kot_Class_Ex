@@ -20,6 +20,46 @@ class MyClass2 {
 }
 
 fun main() {
+    var data19 = "hi"
+    when (data19) {
+        "hi" -> println ("data is hi")
+        "hi2" -> println ("data is hi2")
+        else ->{
+            println ("data is not valid")
+        }
+    }
+
+    var data = 10
+    val result = if(data>0){
+        println("테스트")
+        true
+    } else {
+        println("else 테스트")
+        false
+    }
+    println("result 결괏값 테스트 : $result")
+
+    // 가변 길이의 리스트, 맵
+    val data18 = mutableMapOf<String, Any>()
+    data18.set("key","value")
+    data18.set("key2","7")
+    println(data18.get("key"))
+    println(data18.get("key2"))
+
+    val data17 = mutableListOf<Int>()
+    data17.add(1)
+    data17.add(2)
+    println(data17[0])
+
+    val data15 = intArrayOf(10, 20, 30)
+    val data16 = booleanArrayOf(true, false)
+
+    println(
+        """
+array size : ${data15.size}
+array data : ${data15[0]}, ${data15[1]}, ${data15.get(2)}
+"""
+    )
 
     val data10 : Array<Int> = Array(3,{0})
     data10[0] = 10
