@@ -33,6 +33,11 @@ android {
     buildFeatures {
         viewBinding true
     }
+// 원본 프로젝트의 Test6번의 모듈 안에 build.gradle 파일에서 복사했음.
+    viewBinding {
+        enabled = true
+    }
+
 }
 
 dependencies {
