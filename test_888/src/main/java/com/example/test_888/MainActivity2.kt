@@ -17,6 +17,7 @@ class MainActivity2 : AppCompatActivity(), CompoundButton.OnCheckedChangeListene
         }
     }
 
+    // 2번째 방법의 인터페이스 구현 시 재정의 해야하는 함수.
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
         Log.d("lsy", "체크박스 클릭")
     }
