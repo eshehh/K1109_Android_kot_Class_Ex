@@ -7,7 +7,12 @@
     android:orientation="vertical"
     android:gravity="center">
 
-
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="번들 값 저장 테스트"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/countResultView"
@@ -16,6 +21,23 @@
         android:text="0"
         android:textSize="35dp"
         android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/countSaveView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="35dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/countRestView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="35dp"
+        android:textStyle="bold"/>
+
     <Button
         android:id="@+id/plusCountButton"
         android:layout_width="wrap_content"
