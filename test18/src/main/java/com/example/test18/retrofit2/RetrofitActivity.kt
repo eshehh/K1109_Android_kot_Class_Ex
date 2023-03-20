@@ -23,29 +23,29 @@ class RetrofitActivity : AppCompatActivity() {
 
         val networkService = (applicationContext as MyApplication).networkService
 
-//        val userListCall = networkService.doGetUserList("1")
-//        Log.d("kkang", "url:" + userListCall.request().url().toString())
-//
-//        userListCall.enqueue(object : Callback<UserListModel> {
-//            override fun onResponse(call: Call<UserListModel>, response: Response<UserListModel>) {
-//
-//                val userList = response.body()
-//
-//                //.......................................
-//
-//                binding.recyclerView.adapter=MyAdapter(this@RetrofitActivity, userList?.data)
-//                binding.recyclerView.addItemDecoration(
-//                    DividerItemDecoration(this@RetrofitActivity, LinearLayoutManager.VERTICAL)
-//                )
-//
-//                binding.pageView.text=userList?.page
-//                binding.totalView.text=userList?.total
-//            }
-//
-//            override fun onFailure(call: Call<UserListModel>, t: Throwable) {
-//                call.cancel()
-//            }
-//        })
+        val userListCall = networkService.doGetUserList("1")
+        Log.d("kkang", "url:" + userListCall.request().url().toString())
+
+        userListCall.enqueue(object : Callback<UserListModel> {
+            override fun onResponse(call: Call<UserListModel>, response: Response<UserListModel>) {
+
+                val userList = response.body()
+
+                //.......................................
+
+                binding.recyclerView.adapter=MyAdapter(this@RetrofitActivity, userList?.data)
+                binding.recyclerView.addItemDecoration(
+                    DividerItemDecoration(this@RetrofitActivity, LinearLayoutManager.VERTICAL)
+                )
+
+                binding.pageView.text=userList?.page
+                binding.totalView.text=userList?.total
+            }
+
+            override fun onFailure(call: Call<UserListModel>, t: Throwable) {
+                call.cancel()
+            }
+                })
 
         binding.testButton.setOnClickListener {
 //            val call: Call<UserModel> = networkService.test1()//https://reqres.in/users/list?sort=desc

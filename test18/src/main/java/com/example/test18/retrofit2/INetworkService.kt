@@ -37,13 +37,13 @@ interface INetworkService {
         @Query("name") name: String
     ): Call<UserModel>
 
-    @FormUrlEncoded
-    @POST("user/edit")
-    fun test6(
-        @Field("first_name") first: String?,
-        @Field("last_name") last: String?,
-        @Query("name") name: String?
-    ): Call<UserModel>
+        @FormUrlEncoded
+        @POST("user/edit")
+        fun test6(
+            @Field("first_name") first: String?,
+            @Field("last_name") last: String?,
+            @Query("name") name: String?
+        ): Call<UserModel>
 
     @FormUrlEncoded
     @POST("tasks")
